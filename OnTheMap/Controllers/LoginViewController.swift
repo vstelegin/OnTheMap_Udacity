@@ -33,6 +33,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func logoutPressed() {
+        UdacityAPI.sharedInstance().deleteSession()
+    }
+    
+    func setInfoLabel (infoString : String){
+        infoLabel.text = infoString
+    }
+    
     private func getRequestToken(){
         
     }

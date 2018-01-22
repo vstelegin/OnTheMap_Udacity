@@ -12,6 +12,7 @@ class UdacityAPI {
     
     var sessionID: String? = nil
     var userID: String? = nil
+    let sessionURL = "https://www.udacity.com/api/session"
     
     func getSession(username : String, password: String){
         let headers = [
@@ -19,14 +20,24 @@ class UdacityAPI {
             "Content-Type": "application/json",
         ]
         let bodyURL = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        let request = prepareRequest(apiMethodURL: "https://www.udacity.com/api/session", httpMethod: "POST", headers: headers, body: bodyURL)
+        let request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "POST", headers: headers, body: bodyURL)
         makeRequest(request)
     }
     
-    func deleteSession(userID : String) {
+    func deleteSession() {
+        var request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "DELETE")
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie}
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        makeRequest(request)
         
     }
-    func prepareRequest(apiMethodURL: String, httpMethod: String, headers: [String:String]?, body: String?) -> URLRequest{
+    func prepareRequest(apiMethodURL: String, httpMethod: String, headers: [String:String]? = nil, body: String? = nil) -> URLRequest{
         var request = URLRequest(url: URL(string: apiMethodURL)!)
         request.httpMethod = httpMethod
             if headers != nil {
@@ -49,6 +60,8 @@ class UdacityAPI {
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             print(String(data: newData!, encoding: .utf8)!)
+            
+            
         }
         task.resume()
     }
