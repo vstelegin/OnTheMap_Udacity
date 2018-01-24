@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.usernameTextField.delegate = self as? UITextFieldDelegate
+        self.passwordTextField.delegate = self as? UITextFieldDelegate
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,10 +28,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed() {
+        loginHideKeyboard()
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             infoLabel.text = "Username or Password is Empty"
         } else {
-            UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!)
+            UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {_ in
+                    self.infoLabel.text = "ok"
+            }
         }
     }
     
@@ -37,13 +42,27 @@ class LoginViewController: UIViewController {
         UdacityAPI.sharedInstance().deleteSession()
     }
     
-    func setInfoLabel (infoString : String){
-        infoLabel.text = infoString
+    
+    func textFieldShouldReturn(_ textField : UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
-    private func getRequestToken(){
-        
+    private func resignIfFirstResponder(_ textField: UITextField) {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
     }
+    
+    private func loginHideKeyboard() {
+        resignIfFirstResponder(usernameTextField)
+        resignIfFirstResponder(passwordTextField)
+    }
+    
+    @IBAction func userDidTapView(_ sender: AnyObject){
+        loginHideKeyboard()
+    }
+  
 
 }
 

@@ -14,7 +14,7 @@ class UdacityAPI {
     var userID: String? = nil
     let sessionURL = "https://www.udacity.com/api/session"
     
-    func getSession(username : String, password: String){
+    func getSession(username : String, password: String, completionHandler: @escaping (_ error: String?) -> Void){
         let headers = [
             "Accept": "application/json",
             "Content-Type": "application/json",
@@ -65,7 +65,6 @@ class UdacityAPI {
         }
         task.resume()
     }
-    
     
     class func sharedInstance() -> UdacityAPI {
         struct Singleton {
