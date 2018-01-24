@@ -32,8 +32,8 @@ class LoginViewController: UIViewController {
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             infoLabel.text = "Username or Password is Empty"
         } else {
-            UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {_ in
-                    self.infoLabel.text = "ok"
+            UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {error in
+                    self.infoLabel.text = error
             }
         }
     }
