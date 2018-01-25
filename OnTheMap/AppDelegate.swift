@@ -10,6 +10,9 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var sessionID: String? = nil
+    var userID: String? = nil
 
     var window: UIWindow?
 

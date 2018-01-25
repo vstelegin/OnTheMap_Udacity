@@ -29,12 +29,24 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed() {
         loginHideKeyboard()
-        if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            infoLabel.text = "Username or Password is Empty"
-        } else {
-            UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {error in
-                    self.infoLabel.text = error
+        
+        
+        guard !usernameTextField.text!.isEmpty || !passwordTextField.text!.isEmpty else {
+            performUIUpdatesOnMain {
+                self.showErrorAlert(message: "Username or Password is Empty")
             }
+            return
+        }
+        UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {result in
+            guard result == nil else{
+                self.performUIUpdatesOnMain {
+                    self.showErrorAlert(message: result!)
+                }
+                return
+            }
+            
+            self.presentViewControllerWithIdentifier(identifier: "NavigationController")
+            
         }
     }
     

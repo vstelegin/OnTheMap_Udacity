@@ -6,13 +6,16 @@
 //  Copyright © 2018 s0w4. All rights reserved.
 //
 
-import Foundation
+//import Foundation
+import UIKit
 
 class UdacityAPI {
     
-    var sessionID: String? = nil
-    var userID: String? = nil
+    //var sessionID: String? = nil
+    //var userID: String? = nil
     let sessionURL = "https://www.udacity.com/api/session"
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func getSession(username : String, password: String, completionHandler: @escaping (_ error: String?) -> Void){
         
@@ -22,7 +25,6 @@ class UdacityAPI {
         ]
         let bodyURL = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         let request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "POST", headers: headers, body: bodyURL)
-        //completionHandler("deep ok0")
         
         makeRequest(request) {error in
             completionHandler(error)
@@ -57,23 +59,51 @@ class UdacityAPI {
         return request
     }
     
-    func makeRequest(_ request : URLRequest, completionHandler:  @escaping (_ error: String?) -> Void) {
+    func makeRequest(_ request : URLRequest, completionHandler:  @escaping (_ result: String?) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             
-            if error != nil { // Handle error…
+            if error != nil {
+                print ("Connection error")
                 return
             }
             
-            if let data = data {
-                DispatchQueue.main.async {
-                    let range = Range(5..<data.count)
-                    let newData = data.subdata(in: range) /* subset response data! */
-                    let newDataString = String(data: newData, encoding: .utf8)!
-                    print (newDataString)
-                    completionHandler (newDataString)
-                }
+            guard let data = data else {
+                return
             }
+            
+            // Remove first 5 characters
+            let range = Range(5..<data.count)
+            let newData = data.subdata(in: range) /* subset response data! */
+            let newDataString = String(data: newData, encoding: .utf8)
+            print (newDataString!)
+            
+            // Parse data
+            let jsonData: AnyObject!
+            do {
+                jsonData = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+            } catch {
+                print ("JSON conversion error")
+                return
+            }
+            
+            
+            
+            if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
+                    completionHandler (errorMessage)
+                    return
+            }
+            
+            guard let account = jsonData["account"] as? [String: AnyObject], let userID = account["key"] as? String else {
+                return
+            }
+            
+            guard let session = jsonData["session"] as? [String: AnyObject], let sessionID = session["id"] as? String else {
+                return
+            }
+            self.appDelegate.sessionID = sessionID
+            self.appDelegate.userID = userID
+            completionHandler(nil)
             
         }
         task.resume()
