@@ -26,8 +26,8 @@ extension UIViewController{
         }
     }
     
-    func presentViewControllerWithIdentifier(identifier: String, animated: Bool = true, completion: (() -> Void)? = nil) {
-        let controller = storyboard!.instantiateViewController(withIdentifier: identifier)
-        present(controller, animated: animated, completion: completion)
+    func presentViewControllerWithIdentifier(controller: UIViewController, identifier: String, animated: Bool = true, completion: (() -> Void)? = nil) {
+        let controllerToPresent = controller.storyboard!.instantiateViewController(withIdentifier: identifier)
+        present(controllerToPresent, animated: animated, completion: completion)
     }
 }

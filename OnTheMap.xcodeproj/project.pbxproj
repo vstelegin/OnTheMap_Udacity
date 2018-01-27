@@ -44,6 +44,7 @@
 		06CB97192013176C00D07BF3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				06C79D702019E0A5004B433A /* MainViewController.swift */,
 				06D9F5091FA882CD000434B4 /* LoginViewController.swift */,
 				060F0AB92013344C003E8CB8 /* UdacityAPI.swift */,
 				060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */,
@@ -73,7 +74,6 @@
 				06CB97192013176C00D07BF3 /* Controllers */,
 				06D9F5071FA882CD000434B4 /* AppDelegate.swift */,
 				06D9F50B1FA882CD000434B4 /* Main.storyboard */,
-				06C79D702019E0A5004B433A /* MainViewController.swift */,
 				06D9F50E1FA882CD000434B4 /* Assets.xcassets */,
 				06D9F5101FA882CD000434B4 /* LaunchScreen.storyboard */,
 				06D9F5131FA882CD000434B4 /* Info.plist */,

@@ -45,14 +45,12 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            self.presentViewControllerWithIdentifier(identifier: "NavigationController")
+            self.presentViewControllerWithIdentifier(controller: self, identifier: "NavigationController")
+            
             
         }
     }
     
-    @IBAction func logoutPressed() {
-        UdacityAPI.sharedInstance().deleteSession()
-    }
     
     
     func textFieldShouldReturn(_ textField : UITextField) -> Bool {

@@ -32,7 +32,7 @@ class UdacityAPI {
         
     }
     
-    func deleteSession() {
+    func deleteSession(completionHandler: @escaping (_ error: String?) -> Void) {
         var request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "DELETE")
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
@@ -42,7 +42,9 @@ class UdacityAPI {
         if let xsrfCookie = xsrfCookie {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
-        makeRequest(request) {_ in}
+        makeRequest(request) {error in
+            completionHandler(error)
+        }
         
     }
     func prepareRequest(apiMethodURL: String, httpMethod: String, headers: [String:String]? = nil, body: String? = nil) -> URLRequest{
@@ -87,13 +89,13 @@ class UdacityAPI {
                 return
             }
             
-            
+            completionHandler(nil)
             
             if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
                     completionHandler (errorMessage)
+                    print (errorMessage)
                     return
             }
-            
             guard let account = jsonData["account"] as? [String: AnyObject], let userID = account["key"] as? String else {
                 return
             }

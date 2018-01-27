@@ -46,17 +46,6 @@
                                     <action selector="loginPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Klb-7C-xcn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24d-3B-OzF">
-                                <rect key="frame" x="80" y="414" width="215" height="30"/>
-                                <color key="backgroundColor" red="0.14751713390000001" green="0.82584221030000005" blue="1" alpha="0.10418450342465753" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="79s-sm-yZa"/>
-                                </constraints>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="VZr-Pp-hox"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5F-re-haS" userLabel="InfoLabel">
                                 <rect key="frame" x="47" y="462" width="281" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,19 +56,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="owG-QL-0A7" firstAttribute="top" secondItem="hhH-pV-FkY" secondAttribute="bottom" constant="30" id="6NM-O4-1ie"/>
-                            <constraint firstItem="24d-3B-OzF" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="A54-uJ-ES4"/>
                             <constraint firstItem="N5r-KF-6s5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="Bcy-jX-NB9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="N5r-KF-6s5" secondAttribute="trailing" constant="80" id="J3x-es-tCo"/>
                             <constraint firstItem="J5F-re-haS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="MCb-e2-SZe"/>
                             <constraint firstItem="owG-QL-0A7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MPe-8g-lJd"/>
-                            <constraint firstItem="24d-3B-OzF" firstAttribute="top" secondItem="N5r-KF-6s5" secondAttribute="bottom" constant="23" id="S3l-IQ-mEe"/>
                             <constraint firstItem="hhH-pV-FkY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WA2-d6-X1A"/>
                             <constraint firstItem="hhH-pV-FkY" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="XrG-O6-BJm"/>
                             <constraint firstItem="owG-QL-0A7" firstAttribute="width" secondItem="hhH-pV-FkY" secondAttribute="width" id="Z9e-r4-MSj"/>
                             <constraint firstItem="N5r-KF-6s5" firstAttribute="top" secondItem="owG-QL-0A7" secondAttribute="bottom" constant="48" id="aNJ-U5-hU9"/>
+                            <constraint firstItem="J5F-re-haS" firstAttribute="top" secondItem="N5r-KF-6s5" secondAttribute="bottom" constant="71" id="dgi-5d-ihm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J5F-re-haS" secondAttribute="trailing" constant="47" id="eKH-H6-OAg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="24d-3B-OzF" secondAttribute="trailing" constant="80" id="f3Z-7X-Q84"/>
-                            <constraint firstItem="J5F-re-haS" firstAttribute="top" secondItem="24d-3B-OzF" secondAttribute="bottom" constant="18" id="ffv-Fm-KQe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hhH-pV-FkY" secondAttribute="trailing" constant="48" id="lAi-4q-Pvm"/>
                             <constraint firstItem="hhH-pV-FkY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="203" id="s6c-NN-Zzq"/>
                         </constraints>
@@ -102,7 +88,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="190" y="87"/>
+            <point key="canvasLocation" x="135" y="99"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="Nim-aG-oQk">
@@ -136,11 +122,17 @@
             </objects>
             <point key="canvasLocation" x="1062" y="1520"/>
         </scene>
-        <!--Main View Controller-->
+        <!--On The Map-->
         <scene sceneID="nwD-YG-PoH">
             <objects>
                 <tabBarController id="CMq-Sg-84H" customClass="MainViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="4G3-nT-vKD"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="4G3-nT-vKD">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="uUJ-Bc-j52">
+                            <connections>
+                                <action selector="logoutPressed" destination="CMq-Sg-84H" id="AxJ-fC-IWm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="svq-qi-YPS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -158,6 +150,7 @@
         <!--Navigation Controller-->
         <scene sceneID="nFA-JU-5av">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEN-4O-N56" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="NavigationController" id="jKH-XL-elE" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a1J-Uo-YqS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -167,7 +160,6 @@
                         <segue destination="CMq-Sg-84H" kind="relationship" relationship="rootViewController" id="FYD-4l-HyP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dEN-4O-N56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="110" y="900"/>
         </scene>
