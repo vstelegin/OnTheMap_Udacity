@@ -26,8 +26,31 @@ class UdacityAPI {
         let bodyURL = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         let request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "POST", headers: headers, body: bodyURL)
         
-        makeRequest(request) {error in
-            completionHandler(error)
+        makeRequest(request) {jsonData in
+            
+            guard jsonData != nil else{
+                completionHandler("Wrong server responce")
+                return
+            }
+            if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
+                completionHandler (errorMessage)
+                print (errorMessage)
+                return
+            }
+            
+            guard let account = jsonData!["account"] as? [String: AnyObject], let userID = account["key"] as? String else {
+                return
+            }
+            
+            
+            guard let session = jsonData!["session"] as? [String: AnyObject], let sessionID = session["id"] as? String else {
+                return
+            }
+            
+            self.appDelegate.sessionID = sessionID
+            self.appDelegate.userID = userID
+            
+            completionHandler(nil)
         }
         
     }
@@ -42,8 +65,9 @@ class UdacityAPI {
         if let xsrfCookie = xsrfCookie {
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
-        makeRequest(request) {error in
-            completionHandler(error)
+        
+        makeRequest(request) {jsonData in
+            completionHandler(nil)
         }
         
     }
@@ -61,7 +85,7 @@ class UdacityAPI {
         return request
     }
     
-    func makeRequest(_ request : URLRequest, completionHandler:  @escaping (_ result: String?) -> Void) {
+    func makeRequest(_ request : URLRequest, completionHandler:  @escaping (_ jsonData: AnyObject?) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             
@@ -86,11 +110,10 @@ class UdacityAPI {
                 jsonData = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
             } catch {
                 print ("JSON conversion error")
+                completionHandler(nil)
                 return
             }
-            
-            completionHandler(nil)
-            
+            /*
             if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
                     completionHandler (errorMessage)
                     print (errorMessage)
@@ -103,9 +126,11 @@ class UdacityAPI {
             guard let session = jsonData["session"] as? [String: AnyObject], let sessionID = session["id"] as? String else {
                 return
             }
-            self.appDelegate.sessionID = sessionID
-            self.appDelegate.userID = userID
-            completionHandler(nil)
+            */
+            //self.appDelegate.sessionID = sessionID
+            //self.appDelegate.userID = userID
+          
+            completionHandler(jsonData)
             
         }
         task.resume()

@@ -38,16 +38,15 @@ class LoginViewController: UIViewController {
             return
         }
         UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {result in
-            guard result == nil else{
-                self.performUIUpdatesOnMain {
-                    self.showErrorAlert(message: result!)
+            self.performUIUpdatesOnMain {
+                guard result == nil else{
+                        self.showErrorAlert(message: result!)
+                    return
                 }
-                return
+                
+                self.presentViewControllerWithIdentifier(controller: self, identifier: "NavigationController")
+                
             }
-            
-            self.presentViewControllerWithIdentifier(controller: self, identifier: "NavigationController")
-            
-            
         }
     }
     
