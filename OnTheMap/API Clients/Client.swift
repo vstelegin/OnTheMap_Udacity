@@ -9,7 +9,14 @@
 import Foundation
 
 class Client{
-    func prepareRequest(apiMethodURL: String, httpMethod: String, headers: [String:String]? = nil, body: String? = nil) -> URLRequest{
+    
+    func prepareRequest(apiMethodURL: String, parameters: String = "", httpMethod: String, headers: [String:String]? = nil, body: String? = nil) -> URLRequest{
+        var apiMethodURL = apiMethodURL
+        
+        if parameters != "" {
+            apiMethodURL += "?" + parameters
+        }
+        
         var request = URLRequest(url: URL(string: apiMethodURL)!)
         request.httpMethod = httpMethod
         if headers != nil {
@@ -32,20 +39,17 @@ class Client{
                 return
             }
             
-            guard let data = data else {
+            guard let data = self.processResponseData(data: data) else {
+                print("Bad response data")
+                completionHandler(nil)
                 return
             }
             
-            // Remove first 5 characters
-            let range = Range(5..<data.count)
-            let newData = data.subdata(in: range) /* subset response data! */
-            let newDataString = String(data: newData, encoding: .utf8)
-            print (newDataString!)
-            
+            print(String(data: data, encoding: .utf8)!)
             // Parse data
             let jsonData: AnyObject!
             do {
-                jsonData = try JSONSerialization.jsonObject(with: newData, options: .allowFragments) as AnyObject
+                jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             } catch {
                 print ("JSON conversion error")
                 completionHandler(nil)
@@ -56,6 +60,10 @@ class Client{
             
         }
         task.resume()
+    }
+    
+    func processResponseData(data: Data?) -> Data? {
+        return data!
     }
     
 }

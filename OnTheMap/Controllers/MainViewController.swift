@@ -14,6 +14,9 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ParseAPI.shared.getStudents() {students, error in
+            DataStorage.shared.students = students!
+        }
     }
     
     @IBAction func logoutPressed() {

@@ -90,21 +90,38 @@
             </objects>
             <point key="canvasLocation" x="135" y="99"/>
         </scene>
-        <!--Item 2-->
+        <!--Table-->
         <scene sceneID="Nim-aG-oQk">
             <objects>
-                <viewController id="rmJ-Bc-GHP" sceneMemberID="viewController">
+                <viewController id="rmJ-Bc-GHP" userLabel="Table" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80o-X6-bsf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbG-8X-dxz">
+                                <rect key="frame" x="10" y="64" width="355" height="554"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UbG-8X-dxz" firstAttribute="top" secondItem="o1x-z2-f4s" secondAttribute="top" id="1MJ-1P-gOa"/>
+                            <constraint firstItem="o1x-z2-f4s" firstAttribute="bottom" secondItem="UbG-8X-dxz" secondAttribute="bottom" id="EJn-Ys-xTY"/>
+                            <constraint firstItem="o1x-z2-f4s" firstAttribute="trailing" secondItem="UbG-8X-dxz" secondAttribute="trailing" constant="10" id="U1R-D1-ytP"/>
+                            <constraint firstItem="UbG-8X-dxz" firstAttribute="leading" secondItem="o1x-z2-f4s" secondAttribute="leading" constant="10" id="tZ5-A6-O7M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="o1x-z2-f4s"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="xca-D6-IGE"/>
+                    <connections>
+                        <outlet property="debugLabel" destination="UbG-8X-dxz" id="BgT-Pu-otA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lee-fm-JKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="2185"/>
+            <point key="canvasLocation" x="1061.5999999999999" y="2184.5577211394307"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="Gk7-jQ-pTu">

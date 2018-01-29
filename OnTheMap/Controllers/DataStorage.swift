@@ -8,6 +8,18 @@
 
 import Foundation
 
+class DataStorage {
+    var user: UdacityUser? = nil
+    var student: ParseStudent? = nil
+    var students: [ParseStudent] = [ParseStudent]()
+    
+    class var shared: DataStorage {
+        struct Static {
+            static let instance: DataStorage = DataStorage()
+        }
+        return Static.instance
+    }
+}
 
 struct UdacityUser {
     var id: String = ""

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		060F0ABA2013344C003E8CB8 /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F0AB92013344C003E8CB8 /* UdacityAPI.swift */; };
 		060F0ABE201985C3003E8CB8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */; };
+		0621F0C1201EFF860094C90E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F0C0201EFF860094C90E /* TableViewController.swift */; };
 		06C79D712019E0A5004B433A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D702019E0A5004B433A /* MainViewController.swift */; };
 		06C79D73201EDAFC004B433A /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D72201EDAFC004B433A /* DataStorage.swift */; };
 		06C79D77201EEBD6004B433A /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D76201EEBD6004B433A /* ParseAPI.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		060F0AB92013344C003E8CB8 /* UdacityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		0621F0C0201EFF860094C90E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		06C79D702019E0A5004B433A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		06C79D72201EDAFC004B433A /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		06C79D76201EEBD6004B433A /* ParseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				06C79D702019E0A5004B433A /* MainViewController.swift */,
+				0621F0C0201EFF860094C90E /* TableViewController.swift */,
 				06D9F5091FA882CD000434B4 /* LoginViewController.swift */,
 				060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */,
 				06C79D72201EDAFC004B433A /* DataStorage.swift */,
@@ -177,6 +180,7 @@
 				06C79D73201EDAFC004B433A /* DataStorage.swift in Sources */,
 				060F0ABA2013344C003E8CB8 /* UdacityAPI.swift in Sources */,
 				06C79D79201EECEE004B433A /* Client.swift in Sources */,
+				0621F0C1201EFF860094C90E /* TableViewController.swift in Sources */,
 				06C79D712019E0A5004B433A /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

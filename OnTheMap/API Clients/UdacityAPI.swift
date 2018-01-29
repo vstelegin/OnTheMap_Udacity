@@ -17,6 +17,10 @@ class UdacityAPI: Client{
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    override func processResponseData(data: Data?) -> Data? {
+        return data?.subdata(in: Range(5..<data!.count))
+    }
+    
     func getSession(username : String, password: String, completionHandler: @escaping (_ error: String?) -> Void){
         
         let headers = [
@@ -28,10 +32,6 @@ class UdacityAPI: Client{
         
         makeRequest(request) {jsonData in
             
-            guard jsonData != nil else{
-                completionHandler("Wrong server responce")
-                return
-            }
             if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
                 completionHandler (errorMessage)
                 print (errorMessage)
