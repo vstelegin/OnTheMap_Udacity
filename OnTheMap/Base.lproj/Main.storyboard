@@ -129,7 +129,7 @@
                             <outlet property="delegate" destination="IcM-O2-viF" id="kNa-dL-fR9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Table" id="3ki-qt-WxA" userLabel="Table"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="icon_listview-deselected" selectedImage="icon_listview-selected" id="3ki-qt-WxA" userLabel="Table"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t1J-lk-aiD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,7 +145,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dp0-d0-Jvc"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Mty-Zd-ovI"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="Mty-Zd-ovI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6L-Sq-3qN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,4 +193,10 @@
             <point key="canvasLocation" x="-226" y="973"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_listview-selected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+    </resources>
 </document>
