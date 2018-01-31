@@ -19,7 +19,7 @@ class ParseAPI: Client{
     func getStudents( completionHandler: @escaping (_ students: [ParseStudent]?, _ error: String?) -> Void) {
         
         
-        let request = prepareRequest(apiMethodURL: parseUrl, parameters: "order=-updatedAt&limit=2", httpMethod: "GET", headers: parseKeyHeaders)
+        let request = prepareRequest(apiMethodURL: parseUrl, parameters: "order=-updatedAt&limit=100", httpMethod: "GET", headers: parseKeyHeaders)
         
         makeRequest(request){jsonData in
             guard let results = jsonData!["results"] as? [[String : AnyObject]] else {
