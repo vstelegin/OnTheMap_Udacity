@@ -13,10 +13,8 @@ class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refresh()
         
-        ParseAPI.shared.getStudents() {students, error in
-            DataStorage.shared.students = students!
-        }
     }
     
     @IBAction func logoutPressed() {
@@ -31,6 +29,19 @@ class MainViewController: UITabBarController {
             
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func refresh(){
+        
+        ParseAPI.shared.getStudents() {students, error in
+            self.performUIUpdatesOnMain {
+                DataStorage.shared.students = students!
+                (self.viewControllers![1] as! TableViewController).refresh()
+                (self.viewControllers![0] as! MapViewController).refresh()
+            }
+            
+        }
+        
     }
     
 }

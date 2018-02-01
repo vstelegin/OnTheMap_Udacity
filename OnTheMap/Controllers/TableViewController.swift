@@ -24,4 +24,8 @@ class TableViewController : UITableViewController {
         return cell
     }
     
+    func refresh() {
+        self.tableView.reloadData()
+    }
+    
 }

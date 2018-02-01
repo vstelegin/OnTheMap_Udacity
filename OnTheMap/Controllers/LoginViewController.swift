@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var infoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +22,9 @@ class LoginViewController: UIViewController {
         self.passwordTextField.delegate = self as? UITextFieldDelegate
         usernameTextField.textContentType = .username
         passwordTextField.textContentType = .password
+        
+        usernameTextField.text = "vstelegin@gmail.com"
+        passwordTextField.text = "Hdv-4Jb-wtV-Q7o"
     }
 
     override func didReceiveMemoryWarning() {
