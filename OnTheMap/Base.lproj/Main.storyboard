@@ -165,6 +165,11 @@
                                 <action selector="logoutPressed" destination="CMq-Sg-84H" id="AxJ-fC-IWm"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon_refresh" id="2sX-1T-phM">
+                            <connections>
+                                <action selector="refresh" destination="CMq-Sg-84H" id="4LM-sF-Zed"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="svq-qi-YPS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -202,5 +207,6 @@
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
+        <image name="icon_refresh" width="24" height="24"/>
     </resources>
 </document>

@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,8 +35,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed() {
-        loginHideKeyboard()
         
+        
+        loginHideKeyboard()
         
         guard !usernameTextField.text!.isEmpty || !passwordTextField.text!.isEmpty else {
             performUIUpdatesOnMain {
@@ -42,14 +45,24 @@ class LoginViewController: UIViewController {
             }
             return
         }
+        
+        
+        LoadingIndicatorOverlay.shared.showIndicator(view)
+        
         UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {result in
             self.performUIUpdatesOnMain {
+                
+                
+                
                 guard result == nil else{
-                        self.showErrorAlert(message: result!)
+                    self.showErrorAlert(message: result!)
+                    LoadingIndicatorOverlay.shared.hideIndicator()
                     return
                 }
                 
                 self.presentViewControllerWithIdentifier(controller: self, identifier: "NavigationController")
+                
+                LoadingIndicatorOverlay.shared.hideIndicator()
                 
             }
         }

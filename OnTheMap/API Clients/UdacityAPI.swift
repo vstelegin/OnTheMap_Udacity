@@ -11,8 +11,7 @@ import UIKit
 
 class UdacityAPI: Client{
     
-    //var sessionID: String? = nil
-    //var userID: String? = nil
+
     let sessionURL = "https://www.udacity.com/api/session"
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate

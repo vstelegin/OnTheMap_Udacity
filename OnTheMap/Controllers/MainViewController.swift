@@ -18,6 +18,8 @@ class MainViewController: UITabBarController {
     }
     
     @IBAction func logoutPressed() {
+        LoadingIndicatorOverlay.shared.showIndicator(view)
+        
         UdacityAPI.sharedInstance().deleteSession(){ error in
             
             guard error == nil else{
@@ -32,16 +34,17 @@ class MainViewController: UITabBarController {
     }
     
     @IBAction func refresh(){
+        LoadingIndicatorOverlay.shared.showIndicator(view)
         
         ParseAPI.shared.getStudents() {students, error in
             self.performUIUpdatesOnMain {
+                LoadingIndicatorOverlay.shared.hideIndicator()
                 DataStorage.shared.students = students!
-                (self.viewControllers![1] as! TableViewController).refresh()
+                
                 (self.viewControllers![0] as! MapViewController).refresh()
+                (self.viewControllers![1] as! TableViewController).refresh()
             }
-            
         }
-        
     }
-    
+
 }
