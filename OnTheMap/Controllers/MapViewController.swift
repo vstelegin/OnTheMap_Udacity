@@ -51,4 +51,11 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         }
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            openUrl((view.annotation?.subtitle!)!)
+        }
+    }
+    
 }

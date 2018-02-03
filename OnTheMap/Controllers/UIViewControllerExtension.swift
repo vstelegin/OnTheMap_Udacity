@@ -32,9 +32,12 @@ extension UIViewController{
     }
     
     func openUrl (_ url: String){
+        let validURL = url.contains("http") ? url : "http://\(url)"
+        let escapedURL = validURL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
         let app = UIApplication.shared
-        if let url = URL(string: url), app.canOpenURL(url){
-            app.open(url)
+        if let escapedURL = URL(string: escapedURL), app.canOpenURL(escapedURL){
+            app.open(escapedURL)
         }
         else {
             showErrorAlert(message: "Bad URL...")
