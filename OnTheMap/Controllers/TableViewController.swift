@@ -24,6 +24,10 @@ class TableViewController : UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openUrl(DataStorage.shared.students[indexPath.row].mediaUrl)
+    }
+    
     func refresh() {
         self.tableView.reloadData()
     }
