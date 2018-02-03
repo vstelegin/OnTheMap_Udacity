@@ -24,6 +24,7 @@ class TableViewController : UITableViewController {
         return cell
     }
     
+    // Get and URL from the selected row and try to open it
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         openUrl(DataStorage.shared.students[indexPath.row].mediaUrl)
     }

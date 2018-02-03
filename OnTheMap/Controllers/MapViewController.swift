@@ -28,9 +28,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     
     func refresh() {
         mapView.removeAnnotations(mapView.annotations)
-        
         var annotations = [MKPointAnnotation]()
-        
         for student in DataStorage.shared.students{
             let annotation = MKPointAnnotation()
             annotation.coordinate = getStudentCoordinate(student)
@@ -38,7 +36,19 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             annotation.subtitle = student.mediaUrl
             annotations.append(annotation)
         }
-        
         self.mapView.addAnnotations(annotations)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationId = "annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationId)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationId)
+            annotationView!.canShowCallout = true
+            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
     }
 }
