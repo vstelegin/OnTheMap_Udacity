@@ -46,9 +46,7 @@ class UdacityAPI: Client{
                 return
             }
             DataStorage.shared.sessionID = sessionID
-            DataStorage.shared.user?.id = userID
-            //self.appDelegate.sessionID = sessionID
-            //self.appDelegate.userID = userID
+            DataStorage.shared.userID = userID
             
             completionHandler(nil)
         }

@@ -34,10 +34,8 @@ class ParseAPI: Client{
     }
     
     func checkStudent(_ uniqueKey: String, completionHandler: @escaping (_ student: ParseStudent?, _ error: String?) -> Void){
-        
-        let request = prepareRequest(apiMethodURL: parseUrl, parameters: """
-            where={"uniqueKey":"\(uniqueKey)"}
-            """, httpMethod: "GET")
+        let parameters = ("where={\"uniqueKey\":\"\(uniqueKey)\"}").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let request = prepareRequest(apiMethodURL: parseUrl, parameters: parameters!, httpMethod: "GET", headers: parseKeyHeaders)
         
         makeRequest(request){jsonData in
             guard let results = jsonData!["results"] as? [[String : AnyObject]] else {

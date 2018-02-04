@@ -30,7 +30,7 @@ class MainViewController: UITabBarController {
     }
     
     @IBAction func setLocation(){
-        ParseAPI.shared.checkStudent("1549266838S5dfd6f82ffede0f8e8213c1e0cc0ad4b"){student, error in
+        ParseAPI.shared.checkStudent(DataStorage.shared.userID!){student, error in
             self.performUIUpdatesOnMain {
                 guard error == nil else {
                     self.showErrorAlert(message: error!)
@@ -42,7 +42,6 @@ class MainViewController: UITabBarController {
                 else {
                     self.showErrorAlert(message: "Exists!")
                 }
-                
             }
         }
     }
