@@ -14,22 +14,36 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refresh()
-        
     }
     
-    @IBAction func logoutPressed() {
+    @IBAction func logout() {
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        
         UdacityAPI.sharedInstance().deleteSession(){ error in
-            
             guard error == nil else{
                 self.performUIUpdatesOnMain {
                     self.showErrorAlert(message: error!)
                 }
                 return
             }
-            
             self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func setLocation(){
+        ParseAPI.shared.checkStudent("1549266838S5dfd6f82ffede0f8e8213c1e0cc0ad4b"){student, error in
+            self.performUIUpdatesOnMain {
+                guard error == nil else {
+                    self.showErrorAlert(message: error!)
+                    return
+                }
+                if student == nil {
+                    self.presentViewControllerWithIdentifier(controller: self, identifier: "InformationPostingView")
+                }
+                else {
+                    self.showErrorAlert(message: "Exists!")
+                }
+                
+            }
         }
     }
     

@@ -9,6 +9,7 @@
 import Foundation
 
 class DataStorage {
+    var sessionID: String? = nil
     var user: UdacityUser? = nil
     var student: ParseStudent? = nil
     var students: [ParseStudent] = [ParseStudent]()
@@ -25,8 +26,7 @@ struct UdacityUser {
     var id: String = ""
     var firstName: String = ""
     var lastName: String = ""
-    
-    
+
     init(dictionary: [String: AnyObject]) {
         id = dictionary["id"] as! String
         firstName = dictionary["firstName"] as! String
@@ -48,7 +48,7 @@ struct ParseStudent {
         return "\(firstName) \(lastName)"
     }
     
-    init(dictionary: [String: AnyObject]) {
+    init(_ dictionary: [String: AnyObject]) {
         let defaultValue = "n/a"
         objectId = dictionary["objectId"] as! String!
         uniqueKey = dictionary["uniqueKey"] as? String ?? defaultValue

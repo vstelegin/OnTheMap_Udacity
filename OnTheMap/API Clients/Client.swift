@@ -30,7 +30,7 @@ class Client{
         return request
     }
     
-    func makeRequest(_ request : URLRequest, completionHandler:  @escaping (_ jsonData: AnyObject?) -> Void) {
+    func makeRequest(_ request : URLRequest, _ completionHandler:  @escaping (_ jsonData: AnyObject?) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             

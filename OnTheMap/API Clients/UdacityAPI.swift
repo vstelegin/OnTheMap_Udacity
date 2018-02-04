@@ -14,7 +14,7 @@ class UdacityAPI: Client{
 
     let sessionURL = "https://www.udacity.com/api/session"
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func processResponseData(data: Data?) -> Data? {
         return data?.subdata(in: Range(5..<data!.count))
@@ -45,9 +45,10 @@ class UdacityAPI: Client{
             guard let session = jsonData!["session"] as? [String: AnyObject], let sessionID = session["id"] as? String else {
                 return
             }
-            
-            self.appDelegate.sessionID = sessionID
-            self.appDelegate.userID = userID
+            DataStorage.shared.sessionID = sessionID
+            DataStorage.shared.user?.id = userID
+            //self.appDelegate.sessionID = sessionID
+            //self.appDelegate.userID = userID
             
             completionHandler(nil)
         }

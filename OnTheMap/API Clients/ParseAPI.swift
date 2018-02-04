@@ -17,8 +17,6 @@ class ParseAPI: Client{
     static let shared = ParseAPI()
     
     func getStudents( completionHandler: @escaping (_ students: [ParseStudent]?, _ error: String?) -> Void) {
-        
-        
         let request = prepareRequest(apiMethodURL: parseUrl, parameters: "order=-updatedAt&limit=100", httpMethod: "GET", headers: parseKeyHeaders)
         
         makeRequest(request){jsonData in
@@ -27,15 +25,33 @@ class ParseAPI: Client{
                 completionHandler(nil, "Bad response")
                 return
             }
-            
-            
             var students: [ParseStudent] = []
-            
             for student in results {
-                students.append(ParseStudent(dictionary: student))
+                students.append(ParseStudent(student))
             }
-            
             completionHandler(students, nil)
         }
     }
+    
+    func checkStudent(_ uniqueKey: String, completionHandler: @escaping (_ student: ParseStudent?, _ error: String?) -> Void){
+        
+        let request = prepareRequest(apiMethodURL: parseUrl, parameters: """
+            where={"uniqueKey":"\(uniqueKey)"}
+            """, httpMethod: "GET")
+        
+        makeRequest(request){jsonData in
+            guard let results = jsonData!["results"] as? [[String : AnyObject]] else {
+                print ("Bad response")
+                completionHandler(nil, "Bad response")
+                return
+            }
+            if let student = results.first {
+                completionHandler(ParseStudent(student), nil)
+            }
+            else{
+                completionHandler(nil, nil)
+            }
+        }
+    }
 }
+
