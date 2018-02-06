@@ -37,7 +37,7 @@ class MainViewController: UITabBarController {
                     return
                 }
                 if student == nil {
-                    self.presentViewControllerWithIdentifier(controller: self, identifier: "InformationPostingView")
+                    self.presentViewControllerWithIdentifier(controller: self, identifier: "pin")
                 }
                 else {
                     self.showErrorAlert(message: "Exists!")

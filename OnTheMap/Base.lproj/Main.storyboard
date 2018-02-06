@@ -164,17 +164,73 @@
         <!--InformationPostingView-->
         <scene sceneID="V8I-Pm-7Sl">
             <objects>
-                <viewController storyboardIdentifier="InformationPostingView" id="MUI-Yq-J8w" userLabel="InformationPostingView" sceneMemberID="viewController">
+                <viewController id="MUI-Yq-J8w" userLabel="InformationPostingView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3iZ-xP-Qlo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cof-bm-66r">
+                                <rect key="frame" x="164" y="343" width="46" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="zSJ-Od-YTb" kind="show" id="RqU-06-3mA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PFH-kd-RPl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Location" id="Rf3-rO-vq8">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="NHv-hc-kkF"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dla-wX-SoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-786" y="2321"/>
+            <point key="canvasLocation" x="128.80000000000001" y="3078.7106446776615"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PQB-NJ-xG1">
+            <objects>
+                <viewController id="zSJ-Od-YTb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fGE-Am-XLS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAn-ib-13C">
+                                <rect key="frame" x="137" y="287" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YmH-ls-GGs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLo-Pa-yGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="982" y="3079"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1TO-YS-flU">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DK0-dV-spV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="pin" id="33h-0J-scQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QcJ-Jf-z2E">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Dr-Sa-ote">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="MUI-Yq-J8w" kind="relationship" relationship="rootViewController" id="q7n-R1-52i"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-719" y="3079"/>
         </scene>
         <!--MainView-->
         <scene sceneID="nwD-YG-PoH">
