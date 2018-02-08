@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
-class InformationPostingViewController: UINavigationController{
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class InfoPostingViewController: UIViewController{
+    @IBAction func cancel(){
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
 }

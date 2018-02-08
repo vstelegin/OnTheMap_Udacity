@@ -12,7 +12,7 @@
 		0621F0C1201EFF860094C90E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F0C0201EFF860094C90E /* TableViewController.swift */; };
 		0621F0C32022D5C70094C90E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F0C22022D5C70094C90E /* MapViewController.swift */; };
 		0621F0C520242D890094C90E /* LoadingIndicatorOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621F0C420242D890094C90E /* LoadingIndicatorOverlay.swift */; };
-		062EC35F20295E4400F6FAD5 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC35E20295E4400F6FAD5 /* InformationPostingViewController.swift */; };
+		062EC35F20295E4400F6FAD5 /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062EC35E20295E4400F6FAD5 /* InfoPostingViewController.swift */; };
 		06C79D712019E0A5004B433A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D702019E0A5004B433A /* MainViewController.swift */; };
 		06C79D73201EDAFC004B433A /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D72201EDAFC004B433A /* DataStorage.swift */; };
 		06C79D77201EEBD6004B433A /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C79D76201EEBD6004B433A /* ParseAPI.swift */; };
@@ -30,7 +30,7 @@
 		0621F0C0201EFF860094C90E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0621F0C22022D5C70094C90E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0621F0C420242D890094C90E /* LoadingIndicatorOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorOverlay.swift; sourceTree = "<group>"; };
-		062EC35E20295E4400F6FAD5 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		062EC35E20295E4400F6FAD5 /* InfoPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
 		06C79D702019E0A5004B433A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		06C79D72201EDAFC004B433A /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		06C79D76201EEBD6004B433A /* ParseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		06CB97192013176C00D07BF3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				062EC35E20295E4400F6FAD5 /* InformationPostingViewController.swift */,
+				062EC35E20295E4400F6FAD5 /* InfoPostingViewController.swift */,
 				06C79D702019E0A5004B433A /* MainViewController.swift */,
 				0621F0C22022D5C70094C90E /* MapViewController.swift */,
 				0621F0C0201EFF860094C90E /* TableViewController.swift */,
@@ -188,7 +188,7 @@
 				0621F0C520242D890094C90E /* LoadingIndicatorOverlay.swift in Sources */,
 				0621F0C32022D5C70094C90E /* MapViewController.swift in Sources */,
 				06D9F5081FA882CD000434B4 /* AppDelegate.swift in Sources */,
-				062EC35F20295E4400F6FAD5 /* InformationPostingViewController.swift in Sources */,
+				062EC35F20295E4400F6FAD5 /* InfoPostingViewController.swift in Sources */,
 				06C79D73201EDAFC004B433A /* DataStorage.swift in Sources */,
 				060F0ABA2013344C003E8CB8 /* UdacityAPI.swift in Sources */,
 				06C79D79201EECEE004B433A /* Client.swift in Sources */,

@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="-785" y="1520"/>
         </scene>
-        <!--Login-->
+        <!--Info Posting Start-->
         <scene sceneID="QtZ-V9-AkZ">
             <objects>
-                <viewController id="rrs-eA-djz" userLabel="Login" sceneMemberID="viewController">
+                <viewController id="rrs-eA-djz" userLabel="Info Posting Start" customClass="InfoPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ydb-76-psW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,18 +157,17 @@
                             <constraint firstItem="IyL-ZR-h0t" firstAttribute="top" secondItem="EoO-pK-UMJ" secondAttribute="bottom" constant="10" id="vTY-kE-v0L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hBo-x4-8q4"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="KoW-kA-tTg" appends="YES" id="SOw-uE-96V"/>
-                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="91t-4F-laz"/>
+                    <navigationItem key="navigationItem" title="Add Location" id="91t-4F-laz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="yyS-WM-OcA"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="3q4-0h-gnZ">
+                            <connections>
+                                <action selector="cancel" destination="rrs-eA-djz" id="509-ZT-kKC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjH-Sz-mSp" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="KoW-kA-tTg">
-                    <connections>
-                        <action selector="userDidTapView:" destination="rrs-eA-djz" id="zVg-Uy-MfX"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="129" y="3079"/>
         </scene>
@@ -247,14 +246,21 @@
             </objects>
             <point key="canvasLocation" x="1061.5999999999999" y="1519.7901049475263"/>
         </scene>
-        <!--View Controller-->
+        <!--Info Posting Finish-->
         <scene sceneID="PQB-NJ-xG1">
             <objects>
-                <viewController id="zSJ-Od-YTb" sceneMemberID="viewController">
+                <viewController id="zSJ-Od-YTb" userLabel="Info Posting Finish" customClass="InfoPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="3yA-tb-Dfd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
+                    <navigationItem key="navigationItem" title="Add Location" id="hBf-m7-e7a">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="T3s-3p-OmC">
+                            <connections>
+                                <action selector="cancel" destination="zSJ-Od-YTb" id="ToB-vK-agn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLo-Pa-yGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +292,7 @@
                     <navigationItem key="navigationItem" title="On The Map" id="4G3-nT-vKD">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="uUJ-Bc-j52">
                             <connections>
-                                <action selector="logoutPressed" destination="CMq-Sg-84H" id="AxJ-fC-IWm"/>
+                                <action selector="logout" destination="CMq-Sg-84H" id="xik-qY-4SW"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
