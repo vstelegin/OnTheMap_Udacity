@@ -10,6 +10,10 @@ import UIKit
 
 extension UIViewController{
     
+    @IBAction func cancel(){
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
     func showErrorAlert(message: String, dismissButtonTitle: String = "Dismiss"){
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let dismissAction = UIAlertAction(title: dismissButtonTitle, style: UIAlertActionStyle.cancel){

@@ -96,12 +96,12 @@
         <!--Info Posting Start-->
         <scene sceneID="QtZ-V9-AkZ">
             <objects>
-                <viewController id="rrs-eA-djz" userLabel="Info Posting Start" customClass="InfoPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rrs-eA-djz" userLabel="Info Posting Start" customClass="InfoPostingInputViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ydb-76-psW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="md7-Jq-NBA" userLabel="Location Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Foster City, CA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="md7-Jq-NBA" userLabel="Location Text Field">
                                 <rect key="frame" x="47" y="211" width="281" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ZZv-GS-YNR"/>
@@ -134,7 +134,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="zSJ-Od-YTb" kind="show" id="3x7-Tk-u2F"/>
+                                    <action selector="findLocation" destination="rrs-eA-djz" eventType="touchUpInside" id="ACn-OY-V4K"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="kjo-PU-Pmh">
@@ -162,10 +162,15 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="yyS-WM-OcA"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="3q4-0h-gnZ">
                             <connections>
-                                <action selector="cancel" destination="rrs-eA-djz" id="509-ZT-kKC"/>
+                                <action selector="cancel" destination="rrs-eA-djz" id="4OU-tf-FKb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="linkTextField" destination="EoO-pK-UMJ" id="EWE-bm-6sj"/>
+                        <outlet property="mapStringTextField" destination="md7-Jq-NBA" id="5EU-Tw-Jhm"/>
+                        <segue destination="zSJ-Od-YTb" kind="show" identifier="ShowLocationMap" id="ON6-sY-P2c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjH-Sz-mSp" sceneMemberID="firstResponder"/>
             </objects>
@@ -249,7 +254,7 @@
         <!--Info Posting Finish-->
         <scene sceneID="PQB-NJ-xG1">
             <objects>
-                <viewController id="zSJ-Od-YTb" userLabel="Info Posting Finish" customClass="InfoPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zSJ-Od-YTb" userLabel="Info Posting Finish" customClass="InfoPostingMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="3yA-tb-Dfd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -257,10 +262,13 @@
                     <navigationItem key="navigationItem" title="Add Location" id="hBf-m7-e7a">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="T3s-3p-OmC">
                             <connections>
-                                <action selector="cancel" destination="zSJ-Od-YTb" id="ToB-vK-agn"/>
+                                <action selector="cancel" destination="zSJ-Od-YTb" id="PnX-tL-pIa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="3yA-tb-Dfd" id="QBC-Nw-Aa7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLo-Pa-yGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
