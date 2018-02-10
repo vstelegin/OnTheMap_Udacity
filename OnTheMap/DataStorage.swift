@@ -11,9 +11,9 @@ import Foundation
 class DataStorage {
     var sessionID: String? = nil
     var userID : String? = nil
-    //var user: UdacityUser? = nil
-    //var student: ParseStudent? = nil
-    var students: [ParseStudent] = [ParseStudent]()
+    var user: UdacityUser? = nil
+    var student : ParseStudent? = nil
+    var students : [ParseStudent] = [ParseStudent]()
     
     class var shared: DataStorage {
         struct Static {
@@ -22,19 +22,19 @@ class DataStorage {
         return Static.instance
     }
 }
-/*
-struct UdacityUser {
-    var id: String = ""
-    var firstName: String = ""
-    var lastName: String = ""
 
-    init(dictionary: [String: AnyObject]) {
-        id = dictionary["id"] as! String
-        firstName = dictionary["firstName"] as! String
-        lastName = dictionary["lastName"] as! String
+struct UdacityUser {
+    var userId: String
+    var firstName: String
+    var lastName: String
+    init(dictionary: [String: String] = [:]) {
+        userId = dictionary["userId"] ?? ""
+        firstName = dictionary["firstName"] ?? ""
+        lastName = dictionary["lastName"] ?? ""
+        
     }
 }
-*/
+
 struct ParseStudent {
     var objectId: String
     var uniqueKey: String
@@ -44,7 +44,6 @@ struct ParseStudent {
     var mediaUrl: String
     var latitude: Double
     var longitude: Double
-    
     var fullName: String {
         return "\(firstName) \(lastName)"
     }

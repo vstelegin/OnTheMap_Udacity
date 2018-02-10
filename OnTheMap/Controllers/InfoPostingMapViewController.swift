@@ -33,21 +33,11 @@ class InfoPostingMapViewController : UIViewController{
     
     @IBAction func finish(){
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        ParseAPI.shared.checkStudent(DataStorage.shared.userID!){student, error in
-            
-            LoadingIndicatorOverlay.shared.hideIndicator()
-            guard error == nil else {
-                self.showErrorAlert(message: error!)
-                return
+        UdacityAPI.sharedInstance().getUser(userId: DataStorage.shared.userID!){user,error in
+            self.performUIUpdatesOnMain {
+                LoadingIndicatorOverlay.shared.hideIndicator()
+                print (user!.firstName)
             }
-            
-            if student == nil {
-                print ("No student")
-            }
-            else {
-                print (student!.fullName)
-            }
-            
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class ParseAPI: Client{
     let parseUrl = "https://parse.udacity.com/parse/classes/StudentLocation"
-    let parseKeyHeaders = [
+    var parseKeyHeaders = [
         "X-Parse-Application-Id" : "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr",
         "X-Parse-REST-API-Key" : "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
     ]
@@ -50,6 +50,21 @@ class ParseAPI: Client{
                 completionHandler(nil, nil)
             }
         }
+    }
+    
+    func postStudent(_ student: ParseStudent, completionHandler: (_ error: String?) -> Void ){
+        let body = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"\(student.mapString)\", \"mediaURL\": \"\(student.mediaUrl)\",\"latitude\": \(student.latitude), \"longitude\": \(student.longitude)}"
+        let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
+        let request = prepareRequest(apiMethodURL: parseUrl, httpMethod: "POST", headers: headers, body: body)
+        
+        makeRequest(request){jsonData in
+            guard let results = jsonData!["createdAt"] as? String else {
+                print ("Error posting new student")
+                return
+            }
+            print (results)
+        }
+        
     }
 }
 
