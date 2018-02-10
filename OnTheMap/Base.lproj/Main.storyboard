@@ -255,10 +255,44 @@
         <scene sceneID="PQB-NJ-xG1">
             <objects>
                 <viewController id="zSJ-Od-YTb" userLabel="Info Posting Finish" customClass="InfoPostingMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="3yA-tb-Dfd">
+                    <view key="view" contentMode="scaleToFill" id="Enu-v1-HyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nwQ-ZT-Onh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egd-AF-WFo" userLabel="Finish Button">
+                                <rect key="frame" x="47" y="571" width="281" height="45"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.74653192660000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="zhe-tr-2qJ"/>
+                                </constraints>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finish" destination="zSJ-Od-YTb" eventType="touchUpInside" id="dzr-xk-eED"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Egd-AF-WFo" firstAttribute="leading" secondItem="CtE-Zg-8ff" secondAttribute="leading" constant="47" id="4pE-7X-N8B"/>
+                            <constraint firstItem="nwQ-ZT-Onh" firstAttribute="centerY" secondItem="Egd-AF-WFo" secondAttribute="centerY" constant="-260" id="Gwj-kd-pyU"/>
+                            <constraint firstItem="nwQ-ZT-Onh" firstAttribute="centerX" secondItem="Egd-AF-WFo" secondAttribute="centerX" id="KFf-Cf-6aM"/>
+                            <constraint firstItem="nwQ-ZT-Onh" firstAttribute="top" secondItem="Enu-v1-HyZ" secondAttribute="top" id="OIm-Se-sZT"/>
+                            <constraint firstItem="nwQ-ZT-Onh" firstAttribute="bottom" secondItem="CtE-Zg-8ff" secondAttribute="bottom" id="Z78-F0-CPt"/>
+                            <constraint firstItem="nwQ-ZT-Onh" firstAttribute="leading" secondItem="Enu-v1-HyZ" secondAttribute="leading" id="hAR-CT-vaj"/>
+                            <constraint firstAttribute="trailing" secondItem="nwQ-ZT-Onh" secondAttribute="trailing" id="vmv-c2-YFE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CtE-Zg-8ff"/>
+                    </view>
                     <navigationItem key="navigationItem" title="Add Location" id="hBf-m7-e7a">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="T3s-3p-OmC">
                             <connections>
@@ -267,12 +301,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="3yA-tb-Dfd" id="QBC-Nw-Aa7"/>
+                        <outlet property="mapView" destination="nwQ-ZT-Onh" id="yHY-HE-g9S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLo-Pa-yGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="3079"/>
+            <point key="canvasLocation" x="981.60000000000002" y="3078.7106446776615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1TO-YS-flU">

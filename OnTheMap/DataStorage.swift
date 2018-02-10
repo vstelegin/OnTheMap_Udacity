@@ -12,7 +12,7 @@ class DataStorage {
     var sessionID: String? = nil
     var userID : String? = nil
     //var user: UdacityUser? = nil
-    var student: ParseStudent? = nil
+    //var student: ParseStudent? = nil
     var students: [ParseStudent] = [ParseStudent]()
     
     class var shared: DataStorage {

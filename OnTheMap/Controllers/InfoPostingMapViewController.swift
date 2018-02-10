@@ -30,4 +30,24 @@ class InfoPostingMapViewController : UIViewController{
             self.mapView.regionThatFits(region)
         }
     }
+    
+    @IBAction func finish(){
+        LoadingIndicatorOverlay.shared.showIndicator(view)
+        ParseAPI.shared.checkStudent(DataStorage.shared.userID!){student, error in
+            
+            LoadingIndicatorOverlay.shared.hideIndicator()
+            guard error == nil else {
+                self.showErrorAlert(message: error!)
+                return
+            }
+            
+            if student == nil {
+                print ("No student")
+            }
+            else {
+                print (student!.fullName)
+            }
+            
+        }
+    }
 }

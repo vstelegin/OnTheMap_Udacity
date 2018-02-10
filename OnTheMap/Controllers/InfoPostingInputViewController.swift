@@ -16,6 +16,8 @@ class InfoPostingInputViewController: UIViewController{
     @IBOutlet var linkTextField : UITextField?
  
     @IBAction func findLocation(){
+        mapStringTextField?.text = "Foster City"
+        
         guard let mapString = mapStringTextField?.text , mapString != "" else{
             showErrorAlert(message: "Wrong location")
             return
