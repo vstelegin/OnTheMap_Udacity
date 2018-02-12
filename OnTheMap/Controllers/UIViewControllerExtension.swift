@@ -23,6 +23,16 @@ extension UIViewController{
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func showConfirmationAlert(message: String, dismissButtonTitle: String = "Cancel", actionButtonTitle : String = "OK", handler: @escaping ((UIAlertAction!) -> Void)){
+        let controller = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: dismissButtonTitle, style: .default){
+            (action: UIAlertAction!) in
+            controller.dismiss(animated: true, completion: nil)
+        })
+        controller.addAction(UIAlertAction(title: actionButtonTitle, style: .default, handler: handler))
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
         DispatchQueue.main.async {
             updates()

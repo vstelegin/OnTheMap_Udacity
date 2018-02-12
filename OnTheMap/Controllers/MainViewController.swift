@@ -40,7 +40,9 @@ class MainViewController: UITabBarController {
                     self.presentViewControllerWithIdentifier(controller: self, identifier: "pin")
                 }
                 else {
-                    self.showErrorAlert(message: "Exists!")
+                    self.showConfirmationAlert(message: "\(student!.fullName) already exists.", dismissButtonTitle: "Cancel", actionButtonTitle: "Overwrite"){ (action) in
+                            self.presentViewControllerWithIdentifier(controller: self, identifier: "pin")
+                    }
                 }
             }
         }
