@@ -36,8 +36,25 @@ class InfoPostingMapViewController : UIViewController{
         UdacityAPI.sharedInstance().getUser(userId: DataStorage.shared.userID!){user,error in
             self.performUIUpdatesOnMain {
                 LoadingIndicatorOverlay.shared.hideIndicator()
-                print (user!.firstName)
+                
+            }
+            
+            var student = ParseStudent([
+                "firstName": user!.firstName as AnyObject,
+                "lastName": user!.lastName as AnyObject,
+                "latitude": Double(self.coordinate!.latitude) as AnyObject,
+                "longitude": Double(self.coordinate!.longitude) as AnyObject,
+                "mediaURL": "url" as AnyObject,
+                "mapString": "location" as AnyObject,
+                "uniqueKey": user!.userId as AnyObject,
+                "objectId": "" as AnyObject])
+            if DataStorage.shared.student == nil {
+                ParseAPI.shared.postStudent(student, completionHandler: self.finishHandler)
             }
         }
+    }
+    
+    func finishHandler(error: String?){
+        print ("POSTED")
     }
 }

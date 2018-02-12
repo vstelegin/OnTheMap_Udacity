@@ -47,6 +47,7 @@ class ParseAPI: Client{
                 completionHandler(ParseStudent(student), nil)
             }
             else{
+                
                 completionHandler(nil, nil)
             }
         }

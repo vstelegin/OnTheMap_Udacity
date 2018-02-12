@@ -70,27 +70,7 @@ class UdacityAPI: Client{
         }
         
     }
-    /*
-    func getUser(userId: String, completionHandler: (_ user: UdacityUser?, _ error: String?) -> Void){
-        let udacityGetUSerURL = "https://www.udacity.com/api/users/"
-        let udacityGetCurrentUserURL = udacityGetUSerURL + (DataStorage.shared.user!.userId)
-        let request = prepareRequest(apiMethodURL: udacityGetCurrentUserURL, httpMethod: "GET")
-        makeRequest(request){jsonData in
-            guard let userData = jsonData!["user"] as? [String : AnyObject] else {
-                print ("No user data in response")
-            }
-            guard let firstName = userData["first_name"] as? String, let lastName = user["last_name"] as? String else {
-                print ("No user's firstname or lastname in response")
-                return
-            }
-            let user = UdacityUser(dictionary: [
-                "id": userId,
-                "firstName": firstName,
-                "lastName": lastName])
-            
-        }
-    }
-    */
+
     func getUser(userId: String, completionHandler: @escaping (_ user: UdacityUser?, _ _error: String?) -> Void){
         let udacityGetUSerURL = "https://www.udacity.com/api/users/"
         let udacityGetCurrentUserURL = udacityGetUSerURL + (DataStorage.shared.user!.userId)

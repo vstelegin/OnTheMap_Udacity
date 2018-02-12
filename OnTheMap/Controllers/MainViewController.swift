@@ -36,6 +36,7 @@ class MainViewController: UITabBarController {
                     self.showErrorAlert(message: error!)
                     return
                 }
+                DataStorage.shared.student = student
                 if student == nil {
                     self.presentViewControllerWithIdentifier(controller: self, identifier: "pin")
                 }
