@@ -32,7 +32,7 @@ class UdacityAPI: Client{
             
             if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
                 completionHandler (errorMessage)
-                print (errorMessage)
+                //print (errorMessage)
                 return
             }
             

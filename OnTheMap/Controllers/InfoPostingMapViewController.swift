@@ -44,12 +44,16 @@ class InfoPostingMapViewController : UIViewController{
                 "lastName": user!.lastName as AnyObject,
                 "latitude": Double(self.coordinate!.latitude) as AnyObject,
                 "longitude": Double(self.coordinate!.longitude) as AnyObject,
-                "mediaURL": "url" as AnyObject,
+                "mediaURL": "link" as AnyObject,
                 "mapString": "location" as AnyObject,
                 "uniqueKey": user!.userId as AnyObject,
                 "objectId": "" as AnyObject])
             if DataStorage.shared.student == nil {
                 ParseAPI.shared.postStudent(student, completionHandler: self.finishHandler)
+            } else {
+                print ("ObjectID: \(DataStorage.shared.student!.objectId)")
+                student.objectId = DataStorage.shared.student!.objectId
+                ParseAPI.shared.putStudent(student, completionHandler: self.finishHandler)
             }
         }
     }

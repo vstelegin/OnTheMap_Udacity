@@ -45,7 +45,7 @@ class Client{
                 return
             }
             
-            print(String(data: data, encoding: .utf8)!)
+            //print(String(data: data, encoding: .utf8)!)
             // Parse data
             let jsonData: AnyObject!
             do {

@@ -49,13 +49,14 @@ struct ParseStudent {
     }
     
     init(_ dictionary: [String: AnyObject]) {
-        objectId = dictionary["objectId"] as! String!
-        uniqueKey = dictionary["uniqueKey"] as! String!
-        firstName = dictionary["firstName"] as! String!
-        lastName = dictionary["lastName"] as! String!
-        mapString = dictionary["mapString"] as! String!
-        mediaUrl = dictionary["mediaURL"] as! String!
-        latitude = dictionary["latitude"] as! Double!
-        longitude = dictionary["longitude"] as! Double!
+        let defaultValue = "n/a"
+        objectId = dictionary["objectId"] as? String ?? defaultValue
+        uniqueKey = dictionary["uniqueKey"] as? String ?? defaultValue
+        firstName = dictionary["firstName"] as? String ?? defaultValue
+        lastName = dictionary["lastName"] as? String ?? defaultValue
+        mapString = dictionary["mapString"] as? String ?? defaultValue
+        mediaUrl = dictionary["mediaURL"] as? String ?? defaultValue
+        latitude = dictionary["latitude"] as? Double ?? 0
+        longitude = dictionary["longitude"] as? Double ?? 0
     }
 }

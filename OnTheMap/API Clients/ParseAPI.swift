@@ -47,14 +47,13 @@ class ParseAPI: Client{
                 completionHandler(ParseStudent(student), nil)
             }
             else{
-                
                 completionHandler(nil, nil)
             }
         }
     }
     
     func postStudent(_ student: ParseStudent, completionHandler: (_ error: String?) -> Void ){
-        let body = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"\(student.mapString)\", \"mediaURL\": \"\(student.mediaUrl)\",\"latitude\": \(student.latitude), \"longitude\": \(student.longitude)}"
+        let body = studentToBodyString(student: student)
         let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
         let request = prepareRequest(apiMethodURL: parseUrl, httpMethod: "POST", headers: headers, body: body)
         
@@ -63,9 +62,31 @@ class ParseAPI: Client{
                 print ("Error posting new student")
                 return
             }
-            print (results)
+            print ("POST SUCCESSFUL: \(results)")
         }
-        
     }
+    
+    func putStudent(_ student: ParseStudent, completionHandler: (_ error: String?) -> Void){
+        let body = studentToBodyString(student: student)
+        let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
+        let request = prepareRequest(apiMethodURL: "\(parseUrl)/\(student.objectId)", httpMethod: "PUT", headers: headers, body: body)
+        
+        makeRequest(request){jsonData in
+            guard let results = jsonData!["updatedAt"] as? String else {
+                print ("Error updating student's location")
+                print (jsonData ?? "JSON")
+                return
+            }
+            print ("UPDATED at \(results)")
+            
+        }
+    }
+    
+    func studentToBodyString(student : ParseStudent) -> String {
+        let body = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"\(student.mapString)\", \"mediaURL\": \"\(student.mediaUrl)\",\"latitude\": \(student.latitude), \"longitude\": \(student.longitude)}"
+        return body
+    }
+    
+    
 }
 

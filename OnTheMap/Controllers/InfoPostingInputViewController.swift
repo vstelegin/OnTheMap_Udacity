@@ -34,7 +34,7 @@ class InfoPostingInputViewController: UIViewController{
             
             self.mapString = mapString
             self.coordinate = location!.first!.location!.coordinate
-            print (self.coordinate!)
+           
             self.performSegue(withIdentifier: "ShowLocationMap", sender: self.coordinate)
         }
     }
