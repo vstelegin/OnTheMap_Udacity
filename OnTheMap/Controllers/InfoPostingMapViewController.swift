@@ -59,6 +59,16 @@ class InfoPostingMapViewController : UIViewController{
     }
     
     func finishHandler(error: String?){
-        print ("POSTED")
+        performUIUpdatesOnMain {
+            print ("HANDLER")
+            LoadingIndicatorOverlay.shared.hideIndicator()
+            guard error == nil else {
+                self.showErrorAlert(message: error!)
+                return
+            }
+            
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        
     }
 }

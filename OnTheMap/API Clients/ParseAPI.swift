@@ -52,33 +52,33 @@ class ParseAPI: Client{
         }
     }
     
-    func postStudent(_ student: ParseStudent, completionHandler: (_ error: String?) -> Void ){
+    func postStudent(_ student: ParseStudent, completionHandler: @escaping (_ error: String?) -> Void ){
         let body = studentToBodyString(student: student)
         let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
         let request = prepareRequest(apiMethodURL: parseUrl, httpMethod: "POST", headers: headers, body: body)
         
         makeRequest(request){jsonData in
             guard let results = jsonData!["createdAt"] as? String else {
-                print ("Error posting new student")
+                completionHandler ("Error posting new student")
                 return
             }
-            print ("POST SUCCESSFUL: \(results)")
+            print ("created new record at (\results)")
+            completionHandler(nil)
         }
     }
     
-    func putStudent(_ student: ParseStudent, completionHandler: (_ error: String?) -> Void){
+    func putStudent(_ student: ParseStudent, completionHandler: @escaping (_ error: String?) -> Void){
         let body = studentToBodyString(student: student)
         let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
         let request = prepareRequest(apiMethodURL: "\(parseUrl)/\(student.objectId)", httpMethod: "PUT", headers: headers, body: body)
         
         makeRequest(request){jsonData in
             guard let results = jsonData!["updatedAt"] as? String else {
-                print ("Error updating student's location")
-                print (jsonData ?? "JSON")
+                completionHandler ("Error updating student's location")
                 return
             }
-            print ("UPDATED at \(results)")
-            
+            print ("updated at \(results)")
+            completionHandler(nil)
         }
     }
     
