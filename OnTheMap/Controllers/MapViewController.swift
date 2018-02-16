@@ -22,7 +22,6 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         let lat = CLLocationDegrees(student.latitude)
         let long = CLLocationDegrees(student.longitude)
         let coordinate = CLLocationCoordinate2D (latitude: lat, longitude: long)
-        
         return coordinate
     }
     

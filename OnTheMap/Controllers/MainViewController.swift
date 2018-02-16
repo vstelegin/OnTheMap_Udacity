@@ -56,7 +56,6 @@ class MainViewController: UITabBarController {
             self.performUIUpdatesOnMain {
                 LoadingIndicatorOverlay.shared.hideIndicator()
                 DataStorage.shared.students = students!
-                
                 (self.viewControllers![0] as! MapViewController).refresh()
                 (self.viewControllers![1] as! TableViewController).refresh()
             }

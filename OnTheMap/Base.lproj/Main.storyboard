@@ -167,8 +167,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="linkTextField" destination="EoO-pK-UMJ" id="EWE-bm-6sj"/>
                         <outlet property="mapStringTextField" destination="md7-Jq-NBA" id="5EU-Tw-Jhm"/>
+                        <outlet property="mediaURLTextField" destination="EoO-pK-UMJ" id="c2C-OO-Qup"/>
                         <segue destination="zSJ-Od-YTb" kind="show" identifier="ShowLocationMap" id="ON6-sY-P2c"/>
                     </connections>
                 </viewController>

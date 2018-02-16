@@ -44,7 +44,7 @@ class InfoPostingMapViewController : UIViewController{
                 "lastName": user!.lastName as AnyObject,
                 "latitude": Double(self.coordinate!.latitude) as AnyObject,
                 "longitude": Double(self.coordinate!.longitude) as AnyObject,
-                "mediaURL": "link" as AnyObject,
+                "mediaURL": DataStorage.shared.student!.mediaUrl as AnyObject,
                 "mapString": "location" as AnyObject,
                 "uniqueKey": user!.userId as AnyObject,
                 "objectId": "" as AnyObject])

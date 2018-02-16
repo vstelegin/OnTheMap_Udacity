@@ -13,7 +13,7 @@ class InfoPostingInputViewController: UIViewController{
     var mapString : String?
     var coordinate : CLLocationCoordinate2D?
     @IBOutlet var mapStringTextField : UITextField?
-    @IBOutlet var linkTextField : UITextField?
+    @IBOutlet var mediaURLTextField : UITextField!
  
     @IBAction func findLocation(){
         mapStringTextField?.text = "Foster City"
@@ -22,7 +22,13 @@ class InfoPostingInputViewController: UIViewController{
             showErrorAlert(message: "Wrong location")
             return
         }
+        guard let mediaURL = mediaURLTextField.text, mediaURL != "" else{
+            showErrorAlert(message: "Wrong URL")
+            return
+        }
+        DataStorage.shared.student!.mediaUrl = mediaURL
         
+        // Show loading indicator
         LoadingIndicatorOverlay.shared.showIndicator(view)
         
         CLGeocoder().geocodeAddressString(mapString){location, error in
@@ -34,7 +40,6 @@ class InfoPostingInputViewController: UIViewController{
             
             self.mapString = mapString
             self.coordinate = location!.first!.location!.coordinate
-           
             self.performSegue(withIdentifier: "ShowLocationMap", sender: self.coordinate)
         }
     }
