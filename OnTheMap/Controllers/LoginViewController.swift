@@ -35,8 +35,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed() {
-        
-        
         loginHideKeyboard()
         
         guard !usernameTextField.text!.isEmpty || !passwordTextField.text!.isEmpty else {
@@ -45,7 +43,6 @@ class LoginViewController: UIViewController {
             }
             return
         }
-        
         
         LoadingIndicatorOverlay.shared.showIndicator(view)
         
@@ -69,7 +66,9 @@ class LoginViewController: UIViewController {
     }
     
     
-    
+    @IBAction func signupPressed() {
+        UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, completionHandler: nil)
+    }
     func textFieldShouldReturn(_ textField : UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

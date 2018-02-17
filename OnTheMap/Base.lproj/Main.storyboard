@@ -57,12 +57,41 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="hXE-9L-0aO">
                                 <rect key="frame" x="156.5" y="60" width="62" height="62"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjL-Ud-Lpa">
+                                <rect key="frame" x="77.5" y="339" width="220" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAC-PJ-cqO">
+                                        <rect key="frame" x="165" y="11" width="55" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <action selector="signupPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ee1-Lf-9VG"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06b-pn-PNI">
+                                        <rect key="frame" x="0.0" y="17" width="161" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="06b-pn-PNI" firstAttribute="leading" secondItem="zjL-Ud-Lpa" secondAttribute="leading" id="Fck-zY-mdh"/>
+                                    <constraint firstAttribute="height" constant="52" id="IrR-6G-N2U"/>
+                                    <constraint firstItem="qAC-PJ-cqO" firstAttribute="centerY" secondItem="zjL-Ud-Lpa" secondAttribute="centerY" id="UtO-E2-29s"/>
+                                    <constraint firstAttribute="width" constant="220" id="XTg-mB-egD"/>
+                                    <constraint firstItem="06b-pn-PNI" firstAttribute="centerY" secondItem="zjL-Ud-Lpa" secondAttribute="centerY" id="gnD-Ti-uEy"/>
+                                    <constraint firstAttribute="trailing" secondItem="qAC-PJ-cqO" secondAttribute="trailing" id="tCL-ne-PrE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="owG-QL-0A7" firstAttribute="top" secondItem="hhH-pV-FkY" secondAttribute="bottom" constant="10" id="6NM-O4-1ie"/>
                             <constraint firstItem="N5r-KF-6s5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="Bcy-jX-NB9"/>
                             <constraint firstItem="hhH-pV-FkY" firstAttribute="top" secondItem="hXE-9L-0aO" secondAttribute="bottom" constant="40" id="CAJ-qS-l9f"/>
+                            <constraint firstItem="zjL-Ud-Lpa" firstAttribute="centerX" secondItem="N5r-KF-6s5" secondAttribute="centerX" id="GDN-qG-skr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="N5r-KF-6s5" secondAttribute="trailing" constant="47" id="J3x-es-tCo"/>
                             <constraint firstItem="owG-QL-0A7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MPe-8g-lJd"/>
                             <constraint firstItem="hhH-pV-FkY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WA2-d6-X1A"/>
@@ -71,6 +100,7 @@
                             <constraint firstItem="N5r-KF-6s5" firstAttribute="top" secondItem="owG-QL-0A7" secondAttribute="bottom" constant="10" id="aNJ-U5-hU9"/>
                             <constraint firstItem="hXE-9L-0aO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="cGJ-0f-bXy"/>
                             <constraint firstItem="hXE-9L-0aO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dsb-xf-zm7"/>
+                            <constraint firstItem="zjL-Ud-Lpa" firstAttribute="top" secondItem="N5r-KF-6s5" secondAttribute="bottom" constant="22" id="jOP-SQ-Jb4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="hhH-pV-FkY" secondAttribute="trailing" constant="48" id="lAi-4q-Pvm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -91,7 +121,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-785" y="1520"/>
+            <point key="canvasLocation" x="-787.5" y="1518.75"/>
         </scene>
         <!--Info Posting Start-->
         <scene sceneID="QtZ-V9-AkZ">
@@ -117,7 +147,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IyL-ZR-h0t" userLabel="Find Location Button">
                                 <rect key="frame" x="47" y="321" width="281" height="45"/>
