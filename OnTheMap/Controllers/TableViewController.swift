@@ -19,7 +19,7 @@ class TableViewController : UITableViewController {
         let student = DataStorage.shared.students[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell")!
         cell.imageView?.image = UIImage(named: "icon_pin")
-        cell.textLabel?.text = student.firstName
+        cell.textLabel?.text = student.fullName
         cell.detailTextLabel?.text = student.mediaUrl
         return cell
     }

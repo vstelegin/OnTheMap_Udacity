@@ -62,7 +62,7 @@ class ParseAPI: Client{
                 completionHandler ("Error posting new student")
                 return
             }
-            print ("created new record at (\results)")
+            print ("created new record at \(results)")
             completionHandler(nil)
         }
     }
