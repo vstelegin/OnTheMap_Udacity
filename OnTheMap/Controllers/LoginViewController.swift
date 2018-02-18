@@ -9,13 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +20,9 @@ class LoginViewController: UIViewController {
         self.passwordTextField.delegate = self as? UITextFieldDelegate
         usernameTextField.textContentType = .username
         passwordTextField.textContentType = .password
-        
-        usernameTextField.text = "vstelegin@gmail.com"
-        passwordTextField.text = "Hdv-4Jb-wtV-Q7o"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+    // Login button
     @IBAction func loginPressed() {
         loginHideKeyboard()
         
@@ -43,32 +32,27 @@ class LoginViewController: UIViewController {
             }
             return
         }
-        
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        
-        UdacityAPI.sharedInstance().getSession(username: usernameTextField.text!, password: passwordTextField.text!) {result in
+        UdacityAPI.shared.getSession(username: usernameTextField.text!, password: passwordTextField.text!) {result in
             self.performUIUpdatesOnMain {
-                
-                
                 
                 guard result == nil else{
                     self.showErrorAlert(message: result!)
                     LoadingIndicatorOverlay.shared.hideIndicator()
                     return
                 }
-                
                 self.presentViewControllerWithIdentifier(controller: self, identifier: "NavigationController")
-                
                 LoadingIndicatorOverlay.shared.hideIndicator()
-                
             }
         }
     }
     
-    
+    // Signup button
     @IBAction func signupPressed() {
         UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, completionHandler: nil)
     }
+    
+    // Handle keyboard issues
     func textFieldShouldReturn(_ textField : UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -79,7 +63,7 @@ class LoginViewController: UIViewController {
             textField.resignFirstResponder()
         }
     }
-    
+
     private func loginHideKeyboard() {
         resignIfFirstResponder(usernameTextField)
         resignIfFirstResponder(passwordTextField)

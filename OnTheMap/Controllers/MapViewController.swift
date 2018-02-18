@@ -14,10 +14,10 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mapView.delegate = self
     }
     
+    // Convert latitude and longitude from the ParseStudent struc into CLLocationCoordinate2D
     func getStudentCoordinate(_ student: ParseStudent) -> CLLocationCoordinate2D{
         let lat = CLLocationDegrees(student.latitude)
         let long = CLLocationDegrees(student.longitude)
@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         return coordinate
     }
     
+    // Refresh UI with the data from DataStorage
     func refresh() {
         mapView.removeAnnotations(mapView.annotations)
         var annotations = [MKPointAnnotation]()
@@ -38,6 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         self.mapView.addAnnotations(annotations)
     }
     
+    // Setup Map View annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationId = "annotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationId)
@@ -51,6 +53,7 @@ class MapViewController: UIViewController, MKMapViewDelegate{
         return annotationView
     }
     
+    // Setup annotations behavior
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             openUrl((view.annotation?.subtitle!)!)

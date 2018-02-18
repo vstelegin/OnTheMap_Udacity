@@ -18,11 +18,11 @@ class InfoPostingMapViewController : UIViewController{
         setPin(coordinate!)
     }
     
+    // Place Pin on the Map View
     func setPin(_ coordinate: CLLocationCoordinate2D){
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         annotation.title = "My location"
-        
         let region = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.01, 0.01))
         performUIUpdatesOnMain {
             self.mapView.addAnnotation(annotation)
@@ -31,14 +31,13 @@ class InfoPostingMapViewController : UIViewController{
         }
     }
     
+    // Submit student's data to Parse
     @IBAction func finish(){
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        UdacityAPI.sharedInstance().getUser(userId: DataStorage.shared.userID!){user,error in
+        UdacityAPI.shared.getUser(userId: DataStorage.shared.userID!){user,error in
             self.performUIUpdatesOnMain {
                 LoadingIndicatorOverlay.shared.hideIndicator()
-                
             }
-            
             var student = ParseStudent([
                 "firstName": user!.firstName as AnyObject,
                 "lastName": user!.lastName as AnyObject,
@@ -60,15 +59,12 @@ class InfoPostingMapViewController : UIViewController{
     
     func finishHandler(error: String?){
         performUIUpdatesOnMain {
-            print ("HANDLER")
             LoadingIndicatorOverlay.shared.hideIndicator()
             guard error == nil else {
                 self.showErrorAlert(message: error!)
                 return
             }
-            
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
-        
     }
 }

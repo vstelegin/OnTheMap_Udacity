@@ -11,10 +11,12 @@ import UIKit
 
 class TableViewController : UITableViewController {
     
+    // Set the amount or rows in table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataStorage.shared.students.count
     }
     
+    // Setup Table View to show students data
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let student = DataStorage.shared.students[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell")!

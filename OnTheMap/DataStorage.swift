@@ -31,7 +31,6 @@ struct UdacityUser {
         userId = dictionary["userId"] ?? ""
         firstName = dictionary["firstName"] ?? ""
         lastName = dictionary["lastName"] ?? ""
-        
     }
 }
 
@@ -47,7 +46,6 @@ struct ParseStudent {
     var fullName: String {
         return "\(firstName) \(lastName)"
     }
-    
     init(_ dictionary: [String: AnyObject]) {
         let defaultValue = "n/a"
         objectId = dictionary["objectId"] as? String ?? defaultValue

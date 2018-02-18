@@ -13,12 +13,13 @@ class UdacityAPI: Client{
     
 
     let sessionURL = "https://www.udacity.com/api/session"
-    
+    static let shared = UdacityAPI()
     
     override func processResponseData(data: Data?) -> Data? {
         return data?.subdata(in: Range(5..<data!.count))
     }
     
+    // Get Udacity Session (Login)
     func getSession(username : String, password: String, completionHandler: @escaping (_ error: String?) -> Void){
         
         let headers = [
@@ -35,25 +36,20 @@ class UdacityAPI: Client{
                 //print (errorMessage)
                 return
             }
-            
             guard let account = jsonData!["account"] as? [String: AnyObject], let userID = account["key"] as? String else {
                 return
             }
-            
-            
             guard let session = jsonData!["session"] as? [String: AnyObject], let sessionID = session["id"] as? String else {
                 return
             }
             DataStorage.shared.sessionID = sessionID
             DataStorage.shared.userID = userID
-            
             DataStorage.shared.user = UdacityUser(dictionary: ["userId":"\(userID)"])
-            
             completionHandler(nil)
         }
-        
     }
     
+    // Delete Udacity Session (Logout)
     func deleteSession(completionHandler: @escaping (_ error: String?) -> Void) {
         var request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "DELETE")
         var xsrfCookie: HTTPCookie? = nil
@@ -70,7 +66,8 @@ class UdacityAPI: Client{
         }
         
     }
-
+    
+    // Get Udacity user data with user_id
     func getUser(userId: String, completionHandler: @escaping (_ user: UdacityUser?, _ _error: String?) -> Void){
         let udacityGetUSerURL = "https://www.udacity.com/api/users/"
         let udacityGetCurrentUserURL = udacityGetUSerURL + (DataStorage.shared.user!.userId)
@@ -84,7 +81,6 @@ class UdacityAPI: Client{
                 print ("No user's firstname or lastname in response")
                 return
             }
-            
             let user = UdacityUser(dictionary: [
                 "userId": userId,
                 "firstName": firstName,
@@ -94,11 +90,4 @@ class UdacityAPI: Client{
         }
    
     }
-    class func sharedInstance() -> UdacityAPI {
-        struct Singleton {
-            static var sharedInstance = UdacityAPI()
-        }
-        return Singleton.sharedInstance
-    }
-    
 }

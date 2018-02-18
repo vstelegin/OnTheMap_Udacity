@@ -10,6 +10,7 @@ import UIKit
 
 extension UIViewController{
     
+    // Dismiss current View Controller
     @IBAction func cancel(){
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -33,6 +34,7 @@ extension UIViewController{
         self.present(controller, animated: true, completion: nil)
     }
     
+    // Execute in the main thread asynchronously
     func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
         DispatchQueue.main.async {
             updates()

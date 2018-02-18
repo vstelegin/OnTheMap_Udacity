@@ -14,10 +14,9 @@ class InfoPostingInputViewController: UIViewController{
     var coordinate : CLLocationCoordinate2D?
     @IBOutlet var mapStringTextField : UITextField?
     @IBOutlet var mediaURLTextField : UITextField!
- 
+    
+    // Read Location and URL from user's input, then present next map view controller
     @IBAction func findLocation(){
-        mapStringTextField?.text = "Foster City"
-        
         guard let mapString = mapStringTextField?.text , mapString != "" else{
             showErrorAlert(message: "Wrong location")
             return
@@ -27,23 +26,20 @@ class InfoPostingInputViewController: UIViewController{
             return
         }
         DataStorage.shared.student!.mediaUrl = mediaURL
-        
-        // Show loading indicator
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        
         CLGeocoder().geocodeAddressString(mapString){location, error in
             LoadingIndicatorOverlay.shared.hideIndicator()
             guard error == nil else{
                 self.showErrorAlert(message: "Error finding location")
                 return
             }
-            
             self.mapString = mapString
             self.coordinate = location!.first!.location!.coordinate
             self.performSegue(withIdentifier: "ShowLocationMap", sender: self.coordinate)
         }
     }
     
+    // Prepae segue to cast coordinate to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let infoPostingMap = segue.destination as? InfoPostingMapViewController {
             infoPostingMap.coordinate = sender as? CLLocationCoordinate2D
