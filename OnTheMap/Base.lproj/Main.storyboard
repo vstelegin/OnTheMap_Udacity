@@ -370,14 +370,14 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="icon_refresh" id="2sX-1T-phM" userLabel="Rerfresh Button">
-                                <connections>
-                                    <action selector="refresh" destination="CMq-Sg-84H" id="4LM-sF-Zed"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem image="icon_pin" id="3V9-Qj-ful" userLabel="Pin Button">
                                 <connections>
                                     <action selector="setLocation" destination="CMq-Sg-84H" id="Xx8-Pg-08I"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="icon_refresh" id="2sX-1T-phM" userLabel="Rerfresh Button">
+                                <connections>
+                                    <action selector="refresh" destination="CMq-Sg-84H" id="4LM-sF-Zed"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
