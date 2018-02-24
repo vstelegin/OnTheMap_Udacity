@@ -36,16 +36,15 @@ class Client{
             
             if error != nil {
                 print ("Connection error")
+                completionHandler(["error" : "Connection error"] as AnyObject)
                 return
             }
-            
             guard let data = self.processResponseData(data: data) else {
                 print("Bad response data")
-                completionHandler(nil)
+                completionHandler(["error" : "Bad response data"] as AnyObject)
                 return
             }
-            
-            //print(String(data: data, encoding: .utf8)!)
+
             // Parse data
             let jsonData: AnyObject!
             do {
