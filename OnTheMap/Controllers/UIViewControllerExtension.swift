@@ -60,4 +60,22 @@ extension UIViewController{
         }
     }
     
+    // Hide keyboard
+    func resignIfFirstResponder(_ textField: UITextField) {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+    }
+    
+    func HideKeyboard(_ view: UIView) {
+        var textFields = [UITextField]()
+        for subview in view.subviews {
+            if subview is UITextField {
+                textFields.append(subview as! UITextField)
+            }
+        }
+        for textField in textFields {
+            resignIfFirstResponder(textField)
+        }
+    }
 }

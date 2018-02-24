@@ -29,11 +29,14 @@ class UdacityAPI: Client{
         let bodyURL = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         let request = prepareRequest(apiMethodURL: sessionURL, httpMethod: "POST", headers: headers, body: bodyURL)
         
-        makeRequest(request) {jsonData in
+        makeRequest(request) {jsonData, errorString in
             
+            guard errorString == nil else {
+                completionHandler(errorString)
+                return
+            }
             if let error = jsonData as? [String : AnyObject], let errorMessage = error["error"] as? String {
                 completionHandler (errorMessage)
-                //print (errorMessage)
                 return
             }
             guard let account = jsonData!["account"] as? [String: AnyObject], let userID = account["key"] as? String else {
@@ -61,7 +64,11 @@ class UdacityAPI: Client{
             request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
         }
         
-        makeRequest(request) {jsonData in
+        makeRequest(request) {jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(errorString)
+                return
+            }
             completionHandler(nil)
         }
         
@@ -72,7 +79,11 @@ class UdacityAPI: Client{
         let udacityGetUSerURL = "https://www.udacity.com/api/users/"
         let udacityGetCurrentUserURL = udacityGetUSerURL + (DataStorage.shared.user!.userId)
         let request = prepareRequest(apiMethodURL: udacityGetCurrentUserURL, httpMethod: "GET")
-        makeRequest(request){jsonData in
+        makeRequest(request){jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(nil, errorString)
+                return
+            }
             guard let userData = jsonData!["user"] as? [String : AnyObject] else {
                 print ("No user data in response")
                 return

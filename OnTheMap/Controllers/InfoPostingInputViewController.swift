@@ -9,11 +9,11 @@
 import UIKit
 import MapKit
 
-class InfoPostingInputViewController: UIViewController{
+class InfoPostingInputViewController: UIViewController, UITextFieldDelegate{
     var mapString : String?
     var coordinate : CLLocationCoordinate2D?
-    @IBOutlet var mapStringTextField : UITextField?
-    @IBOutlet var mediaURLTextField : UITextField!
+    @IBOutlet weak var mapStringTextField : UITextField!
+    @IBOutlet weak var mediaURLTextField : UITextField!
     
     // Read Location and URL from user's input, then present next map view controller
     @IBAction func findLocation(){
@@ -39,11 +39,30 @@ class InfoPostingInputViewController: UIViewController{
         }
     }
     
-    // Prepae segue to cast coordinate to the next view controller
+    // Prepare segue to cast coordinate to the next view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let infoPostingMap = segue.destination as? InfoPostingMapViewController {
             infoPostingMap.coordinate = sender as? CLLocationCoordinate2D
         }
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapStringTextField.delegate = self
+        mediaURLTextField.delegate = self
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == mapStringTextField {
+            textField.resignFirstResponder()
+            mediaURLTextField.becomeFirstResponder()
+        }
+        else {
+            findLocation()
+        }
+        return true
+    }
+    
+    @IBAction func userDidTapView(){
+        HideKeyboard(view)
     }
 }
     

@@ -8,24 +8,21 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.usernameTextField.delegate = self as? UITextFieldDelegate
-        self.passwordTextField.delegate = self as? UITextFieldDelegate
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
         usernameTextField.textContentType = .username
         passwordTextField.textContentType = .password
     }
 
     // Login button
     @IBAction func loginPressed() {
-        loginHideKeyboard()
-        
         guard !usernameTextField.text!.isEmpty || !passwordTextField.text!.isEmpty else {
             performUIUpdatesOnMain {
                 self.showErrorAlert(message: "Username or Password is Empty")
@@ -54,23 +51,17 @@ class LoginViewController: UIViewController {
     
     // Handle keyboard issues
     func textFieldShouldReturn(_ textField : UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == usernameTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        else {
+            loginPressed()
+        }
         return true
     }
-    
-    private func resignIfFirstResponder(_ textField: UITextField) {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-    }
-
-    private func loginHideKeyboard() {
-        resignIfFirstResponder(usernameTextField)
-        resignIfFirstResponder(passwordTextField)
-    }
-    
-    @IBAction func userDidTapView(_ sender: AnyObject){
-        loginHideKeyboard()
+    @IBAction func userDidTapView(){
+        HideKeyboard(view)
     }
   
 

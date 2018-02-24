@@ -30,18 +30,16 @@ class Client{
         return request
     }
     
-    func makeRequest(_ request : URLRequest, _ completionHandler:  @escaping (_ jsonData: AnyObject?) -> Void) {
+    func makeRequest(_ request : URLRequest, _ completionHandler:  @escaping (_ jsonData: AnyObject?, _ errorString: String?) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             
             if error != nil {
-                print ("Connection error")
-                completionHandler(["error" : "Connection error"] as AnyObject)
+                completionHandler(nil, error?.localizedDescription)
                 return
             }
             guard let data = self.processResponseData(data: data) else {
-                print("Bad response data")
-                completionHandler(["error" : "Bad response data"] as AnyObject)
+                completionHandler(["error" : "Bad response data"] as AnyObject, nil)
                 return
             }
 
@@ -50,12 +48,10 @@ class Client{
             do {
                 jsonData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
             } catch {
-                print ("JSON conversion error")
-                completionHandler(nil)
+                completionHandler(nil, "Json conversion error")
                 return
             }
-
-            completionHandler(jsonData)
+            completionHandler(jsonData, nil)
             
         }
         task.resume()

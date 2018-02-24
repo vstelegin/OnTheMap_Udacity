@@ -22,7 +22,11 @@ class ParseAPI: Client{
     func getStudents( completionHandler: @escaping (_ students: [ParseStudent]?, _ error: String?) -> Void) {
         let request = prepareRequest(apiMethodURL: parseUrl, parameters: "order=-updatedAt&limit=100", httpMethod: "GET", headers: parseKeyHeaders)
         
-        makeRequest(request){jsonData in
+        makeRequest(request){jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(nil, errorString)
+                return
+            }
             guard let results = jsonData!["results"] as? [[String : AnyObject]] else {
                 print ("Bad response")
                 completionHandler(nil, "Bad response")
@@ -42,7 +46,11 @@ class ParseAPI: Client{
         let parameters = ("where={\"uniqueKey\":\"\(uniqueKey)\"}").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let request = prepareRequest(apiMethodURL: parseUrl, parameters: parameters!, httpMethod: "GET", headers: parseKeyHeaders)
         
-        makeRequest(request){jsonData in
+        makeRequest(request){jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(nil, errorString)
+                return
+            }
             guard let results = jsonData!["results"] as? [[String : AnyObject]] else {
                 print ("Bad response")
                 completionHandler(nil, "Bad response")
@@ -64,7 +72,11 @@ class ParseAPI: Client{
         let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
         let request = prepareRequest(apiMethodURL: parseUrl, httpMethod: "POST", headers: headers, body: body)
         
-        makeRequest(request){jsonData in
+        makeRequest(request){jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(errorString)
+                return
+            }
             guard let results = jsonData!["createdAt"] as? String else {
                 completionHandler ("Error posting new student")
                 return
@@ -80,7 +92,11 @@ class ParseAPI: Client{
         let headers = parseKeyHeaders.merging(["Content-Type": "application/json"]) { (current, _) in current }
         let request = prepareRequest(apiMethodURL: "\(parseUrl)/\(student.objectId)", httpMethod: "PUT", headers: headers, body: body)
         
-        makeRequest(request){jsonData in
+        makeRequest(request){jsonData, errorString in
+            guard errorString == nil else{
+                completionHandler(errorString)
+                return
+            }
             guard let results = jsonData!["updatedAt"] as? String else {
                 completionHandler ("Error updating student's location")
                 return
