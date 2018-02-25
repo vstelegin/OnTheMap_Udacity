@@ -37,6 +37,11 @@ class InfoPostingMapViewController : UIViewController{
         UdacityAPI.shared.getUser(userId: DataStorage.shared.userID!){user,error in
             self.performUIUpdatesOnMain {
                 LoadingIndicatorOverlay.shared.hideIndicator()
+                
+            }
+            guard error == nil else{
+                self.showErrorAlert(message: error!)
+                return
             }
             var student = ParseStudent([
                 "firstName": user!.firstName as AnyObject,

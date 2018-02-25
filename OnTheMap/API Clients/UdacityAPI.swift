@@ -69,13 +69,17 @@ class UdacityAPI: Client{
                 completionHandler(errorString)
                 return
             }
+            guard jsonData!["session"] != nil  else {
+                completionHandler("Bad response")
+                return
+            }
             completionHandler(nil)
         }
         
     }
     
     // Get Udacity user data with user_id
-    func getUser(userId: String, completionHandler: @escaping (_ user: UdacityUser?, _ _error: String?) -> Void){
+    func getUser(userId: String, completionHandler: @escaping (_ user: UdacityUser?, _ error: String?) -> Void){
         let udacityGetUSerURL = "https://www.udacity.com/api/users/"
         let udacityGetCurrentUserURL = udacityGetUSerURL + (DataStorage.shared.user!.userId)
         let request = prepareRequest(apiMethodURL: udacityGetCurrentUserURL, httpMethod: "GET")

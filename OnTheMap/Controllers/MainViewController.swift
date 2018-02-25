@@ -19,7 +19,7 @@ class MainViewController: UITabBarController {
     // Logout
     @IBAction func logout() {
         LoadingIndicatorOverlay.shared.showIndicator(view)
-        UdacityAPI.shared.deleteSession(){ error in
+        UdacityAPI.shared.deleteSession(){error in
             guard error == nil else{
                 self.performUIUpdatesOnMain {
                     LoadingIndicatorOverlay.shared.hideIndicator()
