@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060B6C282046710D00C08802 /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B6C272046710D00C08802 /* UdacityUser.swift */; };
+		060B6C2A204671AC00C08802 /* ParseStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060B6C29204671AC00C08802 /* ParseStudent.swift */; };
 		060F0ABA2013344C003E8CB8 /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F0AB92013344C003E8CB8 /* UdacityAPI.swift */; };
 		060F0ABE201985C3003E8CB8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */; };
 		0619A0E5202D773B00DA36C0 /* InfoPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0619A0E4202D773B00DA36C0 /* InfoPostingMapViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060B6C272046710D00C08802 /* UdacityUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
+		060B6C29204671AC00C08802 /* ParseStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseStudent.swift; sourceTree = "<group>"; };
 		060F0AB92013344C003E8CB8 /* UdacityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		060F0ABD201985C3003E8CB8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0619A0E4202D773B00DA36C0 /* InfoPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostingMapViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +61,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060B6C26204670DC00C08802 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				06C79D72201EDAFC004B433A /* DataStorage.swift */,
+				060B6C29204671AC00C08802 /* ParseStudent.swift */,
+				060B6C272046710D00C08802 /* UdacityUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		06C79D75201EEB98004B433A /* API Clients */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				06C79D75201EEB98004B433A /* API Clients */,
+				060B6C26204670DC00C08802 /* Models */,
 				06CB97192013176C00D07BF3 /* Controllers */,
 				06D9F5071FA882CD000434B4 /* AppDelegate.swift */,
-				06C79D72201EDAFC004B433A /* DataStorage.swift */,
 				06D9F50B1FA882CD000434B4 /* Main.storyboard */,
 				0621F0C420242D890094C90E /* LoadingIndicatorOverlay.swift */,
 				06D9F50E1FA882CD000434B4 /* Assets.xcassets */,
@@ -193,8 +207,10 @@
 				06D9F5081FA882CD000434B4 /* AppDelegate.swift in Sources */,
 				062EC35F20295E4400F6FAD5 /* InfoPostingInputViewController.swift in Sources */,
 				0619A0E5202D773B00DA36C0 /* InfoPostingMapViewController.swift in Sources */,
+				060B6C282046710D00C08802 /* UdacityUser.swift in Sources */,
 				06C79D73201EDAFC004B433A /* DataStorage.swift in Sources */,
 				060F0ABA2013344C003E8CB8 /* UdacityAPI.swift in Sources */,
+				060B6C2A204671AC00C08802 /* ParseStudent.swift in Sources */,
 				06C79D79201EECEE004B433A /* Client.swift in Sources */,
 				0621F0C1201EFF860094C90E /* TableViewController.swift in Sources */,
 				06C79D712019E0A5004B433A /* MainViewController.swift in Sources */,
