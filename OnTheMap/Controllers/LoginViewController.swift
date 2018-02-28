@@ -19,9 +19,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         usernameTextField.textContentType = .username
         passwordTextField.textContentType = .password
-        
-        usernameTextField.text = "vstelegin@gmail.com"
-        passwordTextField.text = "Hdv-4Jb-wtV-Q7o"
     }
 
     // Login button
