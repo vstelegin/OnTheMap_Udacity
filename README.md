@@ -9,5 +9,5 @@ After viewing the information posted by other students, a user can post their ow
 **Swift 4.0** required.
 
 ## Instructions
-Build using XCode 9.0 or higher
+Build using **XCode 9.0** or higher
 
